@@ -3,3 +3,9 @@
 ################################################################################
 
 /BromConsoleNetCore
+/packages
+/.vs
+/Brom/bin
+/Brom/obj
+/BromUnitTests/bin/Debug/netcoreapp2.0
+/BromUnitTests/obj
