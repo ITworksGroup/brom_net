@@ -52,7 +52,7 @@ namespace ITworks.Brom.Metadata {
 			throw new Exception(String.Format("Не удалось получить имена подчиненых узлов для коллекции \"{0}\"", this.Путь()));
 		}
 
-		protected override bool ПопыткаНайтиПодчиненный(string имя, out УзелМетаданных узел) {
+		public override bool ПопыткаНайтиПодчиненный(string имя, out УзелМетаданных узел) {
 			if(base.ПопыткаНайтиПодчиненный(имя, out узел)) {
 				return true;
 			}

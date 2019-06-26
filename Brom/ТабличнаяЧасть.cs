@@ -61,7 +61,7 @@ namespace ITworks.Brom {
 
 		internal void ЗагрузитьДанные(ТаблицаЗначений таблица) {
 			IEnumerable<string> поляТаблица	= таблица.Колонки.Наименования();
-			IEnumerable<string> поляТаблЧасть = this.metadata.Найти("Реквизиты").GetDynamicMemberNames();
+			IEnumerable<string> поляТаблЧасть = this.metadata.НайтиПодчиненный("Реквизиты").GetDynamicMemberNames();
 			IEnumerable<string> общиеПоля = поляТаблЧасть.Intersect(поляТаблица, StringComparer.OrdinalIgnoreCase);
 
 			this.rows.Clear();

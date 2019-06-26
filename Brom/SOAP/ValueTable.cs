@@ -23,9 +23,9 @@ namespace ITworks.Brom.SOAP {
 				rowSOAP.Property = new ValueBase[value.Колонки.Count];
 
 				for (int j = 0; j < value.Колонки.Count; j++) {
-					string columnName = value.Колонки[j].Имя;
-					ValueBase property = ValueBase.From(((dynamic)value[i])[columnName]);
-					property.Name = columnName;
+					КолонкаКоллекцииЗначений column = value.Колонки[j];
+					ValueBase property = ValueBase.From(((dynamic)value[i]).GetByColumn(column));
+					property.Name = column.Имя;
 					rowSOAP.Property[j] = property;
 				}
 				this.Row[i] = rowSOAP;

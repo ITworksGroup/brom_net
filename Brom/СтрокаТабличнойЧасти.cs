@@ -24,7 +24,7 @@ namespace ITworks.Brom {
 		private bool TryGetMemberCommon(string fieldName, out object result) {
 			result = null;
 			УзелМетаданных реквизит;
-			if (this.tableSection.Метаданные().ПопыткаНайти("Реквизиты." + fieldName, out реквизит)) {
+			if (this.tableSection.Метаданные().НайтиПодчиненный("Реквизиты").ПопыткаНайтиПодчиненный(fieldName, out реквизит)) {
 				this.values.TryGetValue(реквизит.Имя(), out result);
 				return true;
 			}
@@ -41,7 +41,7 @@ namespace ITworks.Brom {
 
 		private bool TrySetMemberCommon(string fieldName, object value) {
 			УзелМетаданных реквизит;
-			if (this.tableSection.Метаданные().ПопыткаНайти("Реквизиты." + fieldName, out реквизит)) {
+			if (this.tableSection.Метаданные().НайтиПодчиненный("Реквизиты").ПопыткаНайтиПодчиненный(fieldName, out реквизит)) {
 				if (this.tableSection is ТабличнаяЧастьКонтекст) {
 					this.values[реквизит.Имя()] = value;
 					(this.tableSection as ТабличнаяЧастьКонтекст).SetIsModified(true);

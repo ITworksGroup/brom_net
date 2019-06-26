@@ -38,8 +38,13 @@ namespace ITworks.Brom.Metadata {
 			this.children.Clear();
 		}
 
-		protected virtual bool ПопыткаНайтиПодчиненный(string имя, out УзелМетаданных узел) {
+		public virtual bool ПопыткаНайтиПодчиненный(string имя, out УзелМетаданных узел) {
 			return this.children.TryGetValue(имя, out узел);
+		}
+		public virtual УзелМетаданных НайтиПодчиненный(string имя) {
+			УзелМетаданных узел = null;
+			this.children.TryGetValue(имя, out узел);
+			return узел;
 		}
 
 		public string Имя() {

@@ -28,6 +28,15 @@ namespace ITworks.Brom.Types {
 			this.parentCollection.Колонки.OnColumnRemove -= this.Колонки_OnColumnRemove;
 		}
 
+		internal object GetByColumn(КолонкаКоллекцииЗначений column) {
+			object result = null;
+			this.values.TryGetValue(column, out result);
+			return result;
+		}
+		internal void SetByColumn(КолонкаКоллекцииЗначений column, object value) {
+			this.values[column] = value;
+		}
+
 		public bool TryGetMemberCommon(string fieldName, out object result) {
 			КолонкаКоллекцииЗначений column = this.parentCollection.Колонки.Найти(fieldName);
 			if (column == null) {
