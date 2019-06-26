@@ -25,15 +25,10 @@ namespace ITworks.Brom {
 			this.sort.CollectionChanged += this.OnSettingsChanged;
 
 			this.fieldsAutoloadSettings = АвтозагрузкаПолейОбъектов.Ничего;
-			this.АвтозагрузкаПолей.ПриИзменении += this.АвтозагрузкаПолей_ПриИзменении;
 
 			this.items = new List<Ссылка>();
 
 			this.isModified = false;
-		}
-
-		private void АвтозагрузкаПолей_ПриИзменении(object sender, EventArgs e) {
-			this.isModified = true;
 		}
 
 		private void OnSettingsChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) {

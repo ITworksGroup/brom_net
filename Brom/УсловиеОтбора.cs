@@ -21,30 +21,27 @@
 		/// <param name="значение">Значение сравнения.</param>
 		public УсловиеОтбора(string путьКДанным, object значение):this(путьКДанным, значение, ВидСравнения.Равно) { }
 
-		private string key;
-		private object value;
-		private ВидСравнения comparationType;
+		private readonly string key;
+		private readonly object value;
+		private readonly ВидСравнения comparationType;
 
 		/// <summary>
 		/// Путь к данным поля, например "Производитель.Код".
 		/// </summary>
 		public string Ключ {
 			get { return this.key; }
-			set { this.key = value; }
 		}
 		/// <summary>
 		/// Значение сравнения.
 		/// </summary>
 		public object Значение {
 			get { return this.value; }
-			set { this.value = value; }
 		}
 		/// <summary>
 		/// Вид сравнения.
 		/// </summary>
 		public ВидСравнения ВидСравнения {
 			get { return this.comparationType; }
-			set { this.comparationType = value; }
 		}
 	}
 }

@@ -14,7 +14,7 @@
 		}
 
 		private readonly string key;
-		private НаправлениеСортировки sortDirection;
+		private readonly НаправлениеСортировки sortDirection;
 
 		/// <summary>
 		/// Путь к данным поля, по которому происходит упорядочение, например "Производитель.Код".
@@ -27,7 +27,6 @@
 		/// </summary>
 		public НаправлениеСортировки Направление {
 			get { return this.sortDirection; }
-			set { this.sortDirection = value; }
 		}
 	}
 }

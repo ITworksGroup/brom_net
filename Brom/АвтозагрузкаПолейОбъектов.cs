@@ -21,49 +21,27 @@ namespace ITworks.Brom {
 		/// </summary>
 		public АвтозагрузкаПолейОбъектов():this(false, false, false) { }
 
-		private bool loadDefaultAttributes;
-		private bool loadCustomAttributes;
-		private bool loadTableSections;
-
-		private event EventHandler changed;
-
-		/// <summary>
-		/// Событие при изменении настроек.
-		/// </summary>
-		public event EventHandler ПриИзменении {
-			add { this.changed += value; }
-			remove { this.changed -= value; }
-		}
+		private readonly bool loadDefaultAttributes;
+		private readonly bool loadCustomAttributes;
+		private readonly bool loadTableSections;
 
 		/// <summary>
 		/// Флаг включения автоматической загрузки стандартных реквизитов объектов.
 		/// </summary>
 		public bool ЗагружатьСтандартныеРеквизиты {
 			get { return this.loadDefaultAttributes; }
-			set {
-				this.loadDefaultAttributes = value;
-				this.changed?.Invoke(this, null);
-			}
 		}
 		/// <summary>
 		/// Флаг включения автоматической загрузки поользовательских реквизитов объектов.
 		/// </summary>
 		public bool ЗагружатьПользовательскиеРеквизиты {
 			get { return this.loadCustomAttributes; }
-			set {
-				this.loadCustomAttributes = value;
-				this.changed?.Invoke(this, null);
-			}
 		}
 		/// <summary>
 		/// Флаг включения автоматической загрузки табличных частей объектов.
 		/// </summary>
 		public bool ЗагружатьТабличныеЧасти {
 			get { return this.loadTableSections; }
-			set {
-				this.loadTableSections = value;
-				this.changed?.Invoke(this, null);
-			}
 		}
 
 		/// <summary>
