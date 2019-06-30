@@ -15,7 +15,7 @@ namespace ITworks.Brom.SOAP {
 		}
 
 		public override object GetValue(БромКлиент client = null) {
-			return client != null ? client.Контекст().ПолучитьПеречислениеСсылку(this.Type, this.Value) : throw new System.ArgumentNullException("client");
+			return client != null ? client.Контекст().ПолучитьПеречислениеСсылку(this.Type, this.Value, this.Presentation) : throw new System.ArgumentNullException("client");
 		}
 
 		public static implicit operator ValueEnumRef(ПеречислениеСсылка value) {

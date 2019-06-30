@@ -5,18 +5,24 @@ namespace ITworks.Brom.Types {
 	/// Ссылка на элемент перечисления.
 	/// </summary>
     public class ПеречислениеСсылка : Ссылка {
-		internal ПеречислениеСсылка(БромКлиент клиент, string имяКоллекци, string имя):base(клиент, ITworks.Brom.Types.ТипКоллекции.Перечисление, имяКоллекци) {
+		internal ПеречислениеСсылка(БромКлиент клиент, string имяКоллекци, string имя, string синоним = ""):base(клиент, ITworks.Brom.Types.ТипКоллекции.Перечисление, имяКоллекци) {
 			this.name = !String.IsNullOrEmpty(имя) ? имя : String.Empty;
+			this.title = !String.IsNullOrEmpty(синоним) ? синоним : this.name;
+
 		}
 		internal ПеречислениеСсылка(БромКлиент клиент, string имяКоллекци) : this(клиент, имяКоллекци, null) { }
 
 		private readonly string name;
+		private readonly string title;
 
 		/// <summary>
 		/// Имя элемента перечисления.
 		/// </summary>
 		public string Имя {
 			get { return this.name; }
+		}
+		public string Синоним {
+			get { return this.title; }
 		}
 
 
@@ -33,7 +39,7 @@ namespace ITworks.Brom.Types {
 		/// </summary>
 		/// <returns></returns>
 		public override string ToString() {
-			return this.Метаданные().Синоним();
+			return this.Синоним;
 		}
 	}
 }

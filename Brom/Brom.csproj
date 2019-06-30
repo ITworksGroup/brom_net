@@ -9,7 +9,7 @@
     <Description>Компонента для взаимодействия с расширением "Бром (Brom)" для 1С.</Description>
     <Copyright>ITworks ltd. (ООО "ИТВОРКС")</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.1-beta05</Version>
+    <Version>1.0.1-beta06</Version>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>1C, 1С, Brom, Бром, API, Интеграция, RPC, Обмен, Взаимодействие</PackageTags>
     <SignAssembly>true</SignAssembly>
