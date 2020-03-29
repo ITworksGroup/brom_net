@@ -6,11 +6,11 @@
     <Authors>Anton Shaganov</Authors>
     <Company>ITworks Group (ООО "ИТВОРКС")</Company>
     <Product>Brom</Product>
-    <Description>Компонента для взаимодействия с расширением "Бром (Brom)" для 1С.</Description>
+    <Description>Библиотека для взаимодействия с расширением "Бром" для 1С:Предприятие.</Description>
     <Copyright>ITworks ltd. (ООО "ИТВОРКС")</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.1-beta06</Version>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Version>1.0.1-beta08</Version>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageTags>1C, 1С, Brom, Бром, API, Интеграция, RPC, Обмен, Взаимодействие</PackageTags>
     <SignAssembly>true</SignAssembly>
     <RepositoryType></RepositoryType>
@@ -21,7 +21,7 @@
     <DelaySign>false</DelaySign>
     <AssemblyOriginatorKeyFile>itworks.pfx</AssemblyOriginatorKeyFile>
     <PackageProjectUrl>https://brom.itworks.group</PackageProjectUrl>
-    <PackageLicenseUrl></PackageLicenseUrl>
+    <PackageLicenseUrl>https://brom.itworks.group/license-agreement/</PackageLicenseUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -43,6 +43,12 @@
 
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System">
+      <HintPath>System</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

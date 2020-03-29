@@ -1,0 +1,6 @@
+F:\Development\C# Projects\Brom\BromFramework\obj\Release\BromFramework.csproj.CoreCompileInputs.cache
+F:\Development\C# Projects\Brom\BromFramework\bin\Release\Brom.dll.config
+F:\Development\C# Projects\Brom\BromFramework\bin\Release\Brom.dll
+F:\Development\C# Projects\Brom\BromFramework\bin\Release\Brom.pdb
+F:\Development\C# Projects\Brom\BromFramework\obj\Release\Brom.dll
+F:\Development\C# Projects\Brom\BromFramework\obj\Release\Brom.pdb

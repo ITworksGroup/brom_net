@@ -1,0 +1,1330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd1="https://brom.itworks.group" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12bind="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:tns="https://brom.itworks.group" name="brom_api" targetNamespace="https://brom.itworks.group" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema xmlns:xs1="https://brom.itworks.group" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="https://brom.itworks.group" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="BinaryDataQualifiers">
+        <xs:attribute name="Length" type="xs:int" use="required" />
+        <xs:attribute name="AllowedLength" type="xs:string" use="required" />
+      </xs:complexType>
+      <xs:simpleType name="CollectionType">
+        <xs:union>
+          <xs:simpleType>
+            <xs:restriction base="xs1:CollectionType_RU" />
+          </xs:simpleType>
+          <xs:simpleType>
+            <xs:restriction base="xs1:CollectionType_EN" />
+          </xs:simpleType>
+        </xs:union>
+      </xs:simpleType>
+      <xs:simpleType name="CollectionType_EN">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Catalog" />
+          <xs:enumeration value="Document" />
+          <xs:enumeration value="Enum" />
+          <xs:enumeration value="ChartOfCharacteristicTypes" />
+          <xs:enumeration value="ChartOfAccounts" />
+          <xs:enumeration value="ChartOfCalculationTypes" />
+          <xs:enumeration value="BusinessProcess" />
+          <xs:enumeration value="Task" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="CollectionType_RU">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Справочник" />
+          <xs:enumeration value="Документ" />
+          <xs:enumeration value="Перечисление" />
+          <xs:enumeration value="ПланВидовХарактеристик" />
+          <xs:enumeration value="ПланСчетов" />
+          <xs:enumeration value="ПланВидовРасчета" />
+          <xs:enumeration value="БизнесПроцесс" />
+          <xs:enumeration value="Задача" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="DataTableColumn">
+        <xs:attribute name="Name" type="xs1:PropertyName" use="required" />
+      </xs:complexType>
+      <xs:complexType name="DataTableRow">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Property" type="xs1:ValueBase" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Row" type="xs1:DataTableRow" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DateQualifiers">
+        <xs:attribute name="DateFractions" type="xs:string" use="required" />
+      </xs:complexType>
+      <xs:simpleType name="DocumentPostingMode">
+        <xs:union>
+          <xs:simpleType>
+            <xs:restriction base="xs1:DocumentPostingMode_RU" />
+          </xs:simpleType>
+          <xs:simpleType>
+            <xs:restriction base="xs1:DocumentPostingMode_EN" />
+          </xs:simpleType>
+        </xs:union>
+      </xs:simpleType>
+      <xs:simpleType name="DocumentPostingMode_EN">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Regular" />
+          <xs:enumeration value="RealTime" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="DocumentPostingMode_RU">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Неоперативный" />
+          <xs:enumeration value="Оперативный" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="DocumentWriteMode">
+        <xs:union>
+          <xs:simpleType>
+            <xs:restriction base="xs1:DocumentWriteMode_RU" />
+          </xs:simpleType>
+          <xs:simpleType>
+            <xs:restriction base="xs1:DocumentWriteMode_EN" />
+          </xs:simpleType>
+        </xs:union>
+      </xs:simpleType>
+      <xs:simpleType name="DocumentWriteMode_EN">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Write" />
+          <xs:enumeration value="UndoPosting" />
+          <xs:enumeration value="Posting" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="DocumentWriteMode_RU">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Запись" />
+          <xs:enumeration value="ОтменаПроведения" />
+          <xs:enumeration value="Проведение" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="ExecuteRequest_Settings">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Field" type="xs1:RequestField" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Filter" type="xs1:RequestFilter" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Sort" type="xs1:RequestSort" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Parameter" type="xs1:RequestParameter" />
+        </xs:sequence>
+        <xs:attribute name="QueryResultIteration" type="xs1:QueryResultIterationType" />
+        <xs:attribute name="IncludeTemporalData" type="xs:boolean" />
+      </xs:complexType>
+      <xs:simpleType name="FilterComparisonType">
+        <xs:union>
+          <xs:simpleType>
+            <xs:restriction base="xs1:FilterComparisonType_RU" />
+          </xs:simpleType>
+          <xs:simpleType>
+            <xs:restriction base="xs1:FilterComparisonType_EN" />
+          </xs:simpleType>
+        </xs:union>
+      </xs:simpleType>
+      <xs:simpleType name="FilterComparisonType_EN">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Equal" />
+          <xs:enumeration value="NotEqual" />
+          <xs:enumeration value="Greater" />
+          <xs:enumeration value="GreaterOrEqual" />
+          <xs:enumeration value="Less" />
+          <xs:enumeration value="LessOrEqual" />
+          <xs:enumeration value="Contains" />
+          <xs:enumeration value="NotContains" />
+          <xs:enumeration value="InList" />
+          <xs:enumeration value="NotInList" />
+          <xs:enumeration value="InHierarchy" />
+          <xs:enumeration value="NotInHierarchy" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="FilterComparisonType_RU">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Равно" />
+          <xs:enumeration value="НеРавно" />
+          <xs:enumeration value="Больше" />
+          <xs:enumeration value="БольшеИлиРавно" />
+          <xs:enumeration value="Меньше" />
+          <xs:enumeration value="МеньшеИлиРавно" />
+          <xs:enumeration value="Содержит" />
+          <xs:enumeration value="НеСодержит" />
+          <xs:enumeration value="ВСписке" />
+          <xs:enumeration value="НеВСписке" />
+          <xs:enumeration value="ВИерархии" />
+          <xs:enumeration value="НеВИерархии" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="GetConstant_Settings">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Field" type="xs1:RequestField" />
+        </xs:sequence>
+        <xs:attribute name="PropertiesHierarchyType" type="xs1:PropertiesHierarchyType" />
+        <xs:attribute name="AddSkippedProperties" type="xs:boolean" />
+      </xs:complexType>
+      <xs:complexType name="GetObjectList_Settings">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:GetObject_Settings">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="Filter" type="xs1:RequestFilter" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="Sort" type="xs1:RequestSort" />
+            </xs:sequence>
+            <xs:attribute name="Limit" type="xs:unsignedInt" />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetObject_Settings">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Field" type="xs1:RequestField" />
+          <xs:element minOccurs="0" name="FieldAutoinclusion" nillable="true" type="xs1:RequestFieldAutoinclusionSettings" />
+        </xs:sequence>
+        <xs:attribute name="PropertiesHierarchyType" type="xs1:PropertiesHierarchyType" />
+        <xs:attribute name="AddSkippedProperties" type="xs:boolean" />
+      </xs:complexType>
+      <xs:complexType name="MetadataApplication">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:MetadataNode">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="Collection" type="xs1:MetadataCollection" />
+            </xs:sequence>
+            <xs:attribute default="0" name="TotalObjectsCount" type="xs:int" />
+            <xs:attribute name="RequestedObjectsCount" type="xs:int" use="required" />
+            <xs:attribute default="0" name="PackSize" type="xs:int" />
+            <xs:attribute default="0" name="PackIndex" type="xs:int" />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="MetadataAttribute">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:MetadataNode" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="MetadataCollection">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:MetadataNode">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="Item" type="xs1:MetadataNode" />
+            </xs:sequence>
+            <xs:attribute default="0" name="TotalObjectsCount" type="xs:int" />
+            <xs:attribute name="RequestedObjectsCount" type="xs:int" use="required" />
+            <xs:attribute name="PackObjectsCount" type="xs:int" use="required" />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="MetadataModule">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:MetadataNode" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="MetadataNode" abstract="true">
+        <xs:attribute name="Name" type="xs:string" use="required" />
+        <xs:attribute name="FullName" type="xs:string" use="required" />
+        <xs:attribute name="Title" type="xs:string" />
+      </xs:complexType>
+      <xs:complexType name="MetadataObject">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:MetadataNode">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="Attribute" type="xs1:MetadataAttribute" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="TableSection" type="xs1:MetadataTableSection" />
+              <xs:element name="Predefined" nillable="true" type="xs1:ValueStruct" />
+            </xs:sequence>
+            <xs:attribute name="CollectionType" type="xs1:CollectionType" use="required" />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="MetadataTableSection">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:MetadataNode">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="Attribute" type="xs1:MetadataAttribute" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="NumberQualifiers">
+        <xs:attribute name="Digits" type="xs:int" use="required" />
+        <xs:attribute name="FractionDigits" type="xs:int" use="required" />
+        <xs:attribute name="OnlyPositive" type="xs:boolean" use="required" />
+      </xs:complexType>
+      <xs:complexType name="PostObject_Settings">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdditionalProperties" nillable="true" type="xs1:ValueStruct" />
+        </xs:sequence>
+        <xs:attribute name="DocumentWriteMode" type="xs1:DocumentWriteMode" />
+        <xs:attribute name="DocumentPostingMode" type="xs1:DocumentPostingMode" />
+        <xs:attribute name="ExchangeLoadMode" type="xs:boolean" />
+      </xs:complexType>
+      <xs:simpleType name="PropertiesHierarchyType">
+        <xs:restriction base="xs:string" />
+      </xs:simpleType>
+      <xs:simpleType name="PropertiesHierarchyType_EN">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="SingleLevel" />
+          <xs:enumeration value="Hierarchy" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="PropertiesHierarchyType_RU">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="ОдинУровень" />
+          <xs:enumeration value="Иерархия" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="PropertyName">
+        <xs:restriction base="xs:string">
+          <xs:minLength value="1" />
+          <xs:pattern value="[A-Za-zА-Яа-я_]{1}[A-Za-zА-Яа-я_0-9]*" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="QueryResultIterationType">
+        <xs:restriction base="xs:string" />
+      </xs:simpleType>
+      <xs:simpleType name="QueryResultIterationType_EN">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Linear" />
+          <xs:enumeration value="ByGroups" />
+          <xs:enumeration value="ByGroupsWithHierarchy" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="QueryResultIterationType_RU">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Прямой" />
+          <xs:enumeration value="ПоГруппировкам" />
+          <xs:enumeration value="ПоГруппировкамСИерархией" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="RequestField">
+        <xs:attribute name="Key" type="xs:string" use="required" />
+        <xs:attribute name="Name" type="xs:string" />
+      </xs:complexType>
+      <xs:complexType name="RequestFieldAutoinclusionSettings">
+        <xs:attribute name="DefaultFields" type="xs:boolean" />
+        <xs:attribute name="CustomFields" type="xs:boolean" />
+        <xs:attribute name="Tables" type="xs:boolean" />
+      </xs:complexType>
+      <xs:complexType name="RequestFilter">
+        <xs:sequence>
+          <xs:element name="Value" type="xs1:ValueBase" />
+        </xs:sequence>
+        <xs:attribute name="Key" type="xs:string" use="required" />
+        <xs:attribute default="Equal" name="ComparisonType" type="xs1:FilterComparisonType" />
+      </xs:complexType>
+      <xs:complexType name="RequestParameter">
+        <xs:sequence>
+          <xs:element name="Value" nillable="true" type="xs1:ValueBase" />
+        </xs:sequence>
+        <xs:attribute name="Key" type="xs:string" use="required" />
+      </xs:complexType>
+      <xs:complexType name="RequestSettings">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="Filter" type="xs1:RequestFilter" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="Sort" type="xs1:RequestSort" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="Field" type="xs1:RequestField" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="Parameter" type="xs1:RequestParameter" />
+          <xs:element name="FieldAutoinclusion" nillable="true" type="xs1:RequestFieldAutoinclusionSettings" />
+        </xs:sequence>
+        <xs:attribute name="Limit" type="xs:unsignedInt" />
+        <xs:attribute name="PropertiesHierarchyType" type="xs1:PropertiesHierarchyType" />
+        <xs:attribute name="AddSkippedProperties" type="xs:boolean" />
+        <xs:attribute name="QueryResultIteration" type="xs1:QueryResultIterationType" />
+      </xs:complexType>
+      <xs:complexType name="RequestSort">
+        <xs:attribute name="Key" type="xs:string" use="required" />
+        <xs:attribute default="Asc" name="Direction" type="xs1:SortDirectionType" />
+      </xs:complexType>
+      <xs:simpleType name="SortDirectionType">
+        <xs:restriction base="xs:string" />
+      </xs:simpleType>
+      <xs:simpleType name="SortDirectionType_EN">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Asc" />
+          <xs:enumeration value="Desc" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="SortDirectionType_RU">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Возр" />
+          <xs:enumeration value="Убыв" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="StringQualifiers">
+        <xs:attribute name="Length" type="xs:int" use="required" />
+        <xs:attribute name="AllowedLength" type="xs:string" use="required" />
+      </xs:complexType>
+      <xs:simpleType name="UID">
+        <xs:restriction base="xs:string">
+          <xs:length value="36" />
+          <xs:pattern value="[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="ValueAccountType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueSystemEnum" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueAccountingRecordType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueSystemEnum" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueAccumulationRecordType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueSystemEnum" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueArray">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueBase">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="Item" type="xs1:ValueBase" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueBase" abstract="true">
+        <xs:attribute name="Name" type="xs1:PropertyName" />
+      </xs:complexType>
+      <xs:complexType name="ValueBinaryData">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueBase">
+            <xs:attribute name="Value" type="xs:base64Binary" use="required" />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueBoolean">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueSimple">
+            <xs:attribute name="Value" type="xs:boolean" use="required" />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueBoundary">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueBase">
+            <xs:sequence>
+              <xs:element name="Value" type="xs1:ValueBase" />
+            </xs:sequence>
+            <xs:attribute name="Type" type="xs:string" use="required" />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueDBNull">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueBase" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueDataSet" abstract="true">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueBase">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="Column" type="xs1:DataTableColumn" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="Row" type="xs1:DataTableRow" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueDate">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueSimple">
+            <xs:attribute name="Value" type="xs:dateTime" use="required" />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueDocumentPostingMode">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueSystemEnum" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueDocumentWriteMode">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueSystemEnum" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueEnumRef">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueRef">
+            <xs:attribute name="Value" type="xs:string" />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueGuid">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueBase">
+            <xs:attribute name="Value" type="xs1:UID" use="required" />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueKeyValue">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueBase">
+            <xs:sequence>
+              <xs:element name="Key" type="xs1:ValueBase" />
+              <xs:element name="Value" type="xs1:ValueBase" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueMap">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueBase">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValue" type="xs1:ValueKeyValue" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueNonserializable">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueBase" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueNull">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueBase" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueNumber">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueSimple">
+            <xs:attribute name="Value" type="xs:decimal" use="required" />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueObjectRef">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueRef">
+            <xs:attribute name="Value" type="xs1:UID" use="required" />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValuePointInTime">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueBase">
+            <xs:sequence>
+              <xs:element name="Ref" type="xs1:ValueObjectRef" />
+            </xs:sequence>
+            <xs:attribute name="Date" type="xs:dateTime" use="required" />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueRef" abstract="true">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueStructured">
+            <xs:attribute name="Type" type="xs:string" use="required" />
+            <xs:attribute name="Presentation" type="xs:string" />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueSimple" abstract="true">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueBase" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueStorage">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueBase">
+            <xs:sequence>
+              <xs:element name="Data" type="xs1:ValueBase" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueString">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueSimple">
+            <xs:attribute name="Value" type="xs:string" use="required" />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueStruct">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueStructured" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueStructured" abstract="true">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueBase">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="Property" type="xs1:ValueBase" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueSystemEnum" abstract="true">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueBase">
+            <xs:attribute name="Value" type="xs:string" use="required" />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueTable">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueDataSet" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueTree">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueDataSet" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueBase">
+            <xs:attribute name="Value" type="xs:string" use="required" />
+            <xs:attribute name="Namespace" type="xs:string" use="required" />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueTypeDescription">
+        <xs:complexContent mixed="false">
+          <xs:extension base="xs1:ValueBase">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="Item" type="xs1:ValueType" />
+              <xs:element minOccurs="0" name="StringQualifiers" nillable="true" type="xs1:StringQualifiers" />
+              <xs:element minOccurs="0" name="NumberQualifiers" nillable="true" type="xs1:NumberQualifiers" />
+              <xs:element minOccurs="0" name="DateQualifiers" nillable="true" type="xs1:DateQualifiers" />
+              <xs:element minOccurs="0" name="BinaryDataQualifiers" nillable="true" type="xs1:BinaryDataQualifiers" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DebugPing">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DebugPingResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DebugEcho">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="param" type="xs1:ValueBase" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DebugEchoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:ValueBase" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSystemInfo">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSystemInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:ValueStruct" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetMetadata">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="nodes" nillable="true" type="xs:string" />
+            <xs:element name="pack_size" nillable="true" type="xs:unsignedInt" />
+            <xs:element name="pack_index" nillable="true" type="xs:unsignedInt" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetMetadataResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:MetadataApplication" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetMetadaChildrenNames">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="parents" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetMetadaChildrenNamesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:ValueMap" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetObject">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="reference" type="xs1:ValueRef" />
+            <xs:element name="settings" nillable="true" type="xs1:GetObject_Settings" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetObjectResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:ValueRef" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PostObject">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="object" type="xs1:ValueObjectRef" />
+            <xs:element name="settings" nillable="true" type="xs1:PostObject_Settings" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PostObjectResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:ValueObjectRef" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteObject">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="object" type="xs1:ValueObjectRef" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteObjectResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" nillable="true" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetObjectList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="type" type="xs1:CollectionType" />
+            <xs:element name="name" type="xs:string" />
+            <xs:element name="settings" nillable="true" type="xs1:GetObjectList_Settings" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetObjectListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:ValueArray" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSessionParameter">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs1:PropertyName" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSessionParameterResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:ValueBase" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetConstant">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs1:PropertyName" />
+            <xs:element name="settings" nillable="true" type="xs1:GetConstant_Settings" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetConstantResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:ValueBase" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SetConstant">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs1:PropertyName" />
+            <xs:element name="value" type="xs1:ValueBase" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SetConstantResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" nillable="true" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetConstantList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="settings" nillable="true" type="xs1:GetConstant_Settings" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetConstantListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:ValueStruct" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ExecuteRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="request" type="xs:string" />
+            <xs:element name="settings" nillable="true" type="xs1:ExecuteRequest_Settings" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ExecuteRequestResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:ValueDataSet" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ExecuteRequestBatch">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="request" type="xs:string" />
+            <xs:element name="settings" nillable="true" type="xs1:ExecuteRequest_Settings" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ExecuteRequestBatchResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:ValueArray" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ExecuteMethod">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="module" nillable="true" type="xs:string" />
+            <xs:element name="method" type="xs:string" />
+            <xs:element name="params" nillable="true" type="xs1:ValueArray" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ExecuteMethodResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" nillable="true" type="xs1:ValueBase" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ExecuteCode">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="code" type="xs:string" />
+            <xs:element name="param" nillable="true" type="xs1:ValueBase" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ExecuteCodeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" nillable="true" type="xs1:ValueBase" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </types>
+  <message name="DebugPingRequestMessage">
+    <part name="parameters" element="tns:DebugPing" />
+  </message>
+  <message name="DebugPingResponseMessage">
+    <part name="parameters" element="tns:DebugPingResponse" />
+  </message>
+  <message name="DebugEchoRequestMessage">
+    <part name="parameters" element="tns:DebugEcho" />
+  </message>
+  <message name="DebugEchoResponseMessage">
+    <part name="parameters" element="tns:DebugEchoResponse" />
+  </message>
+  <message name="GetSystemInfoRequestMessage">
+    <part name="parameters" element="tns:GetSystemInfo" />
+  </message>
+  <message name="GetSystemInfoResponseMessage">
+    <part name="parameters" element="tns:GetSystemInfoResponse" />
+  </message>
+  <message name="GetMetadataRequestMessage">
+    <part name="parameters" element="tns:GetMetadata" />
+  </message>
+  <message name="GetMetadataResponseMessage">
+    <part name="parameters" element="tns:GetMetadataResponse" />
+  </message>
+  <message name="GetMetadaChildrenNamesRequestMessage">
+    <part name="parameters" element="tns:GetMetadaChildrenNames" />
+  </message>
+  <message name="GetMetadaChildrenNamesResponseMessage">
+    <part name="parameters" element="tns:GetMetadaChildrenNamesResponse" />
+  </message>
+  <message name="GetObjectRequestMessage">
+    <part name="parameters" element="tns:GetObject" />
+  </message>
+  <message name="GetObjectResponseMessage">
+    <part name="parameters" element="tns:GetObjectResponse" />
+  </message>
+  <message name="PostObjectRequestMessage">
+    <part name="parameters" element="tns:PostObject" />
+  </message>
+  <message name="PostObjectResponseMessage">
+    <part name="parameters" element="tns:PostObjectResponse" />
+  </message>
+  <message name="DeleteObjectRequestMessage">
+    <part name="parameters" element="tns:DeleteObject" />
+  </message>
+  <message name="DeleteObjectResponseMessage">
+    <part name="parameters" element="tns:DeleteObjectResponse" />
+  </message>
+  <message name="GetObjectListRequestMessage">
+    <part name="parameters" element="tns:GetObjectList" />
+  </message>
+  <message name="GetObjectListResponseMessage">
+    <part name="parameters" element="tns:GetObjectListResponse" />
+  </message>
+  <message name="GetSessionParameterRequestMessage">
+    <part name="parameters" element="tns:GetSessionParameter" />
+  </message>
+  <message name="GetSessionParameterResponseMessage">
+    <part name="parameters" element="tns:GetSessionParameterResponse" />
+  </message>
+  <message name="GetConstantRequestMessage">
+    <part name="parameters" element="tns:GetConstant" />
+  </message>
+  <message name="GetConstantResponseMessage">
+    <part name="parameters" element="tns:GetConstantResponse" />
+  </message>
+  <message name="SetConstantRequestMessage">
+    <part name="parameters" element="tns:SetConstant" />
+  </message>
+  <message name="SetConstantResponseMessage">
+    <part name="parameters" element="tns:SetConstantResponse" />
+  </message>
+  <message name="GetConstantListRequestMessage">
+    <part name="parameters" element="tns:GetConstantList" />
+  </message>
+  <message name="GetConstantListResponseMessage">
+    <part name="parameters" element="tns:GetConstantListResponse" />
+  </message>
+  <message name="ExecuteRequestRequestMessage">
+    <part name="parameters" element="tns:ExecuteRequest" />
+  </message>
+  <message name="ExecuteRequestResponseMessage">
+    <part name="parameters" element="tns:ExecuteRequestResponse" />
+  </message>
+  <message name="ExecuteRequestBatchRequestMessage">
+    <part name="parameters" element="tns:ExecuteRequestBatch" />
+  </message>
+  <message name="ExecuteRequestBatchResponseMessage">
+    <part name="parameters" element="tns:ExecuteRequestBatchResponse" />
+  </message>
+  <message name="ExecuteMethodRequestMessage">
+    <part name="parameters" element="tns:ExecuteMethod" />
+  </message>
+  <message name="ExecuteMethodResponseMessage">
+    <part name="parameters" element="tns:ExecuteMethodResponse" />
+  </message>
+  <message name="ExecuteCodeRequestMessage">
+    <part name="parameters" element="tns:ExecuteCode" />
+  </message>
+  <message name="ExecuteCodeResponseMessage">
+    <part name="parameters" element="tns:ExecuteCodeResponse" />
+  </message>
+  <portType name="brom_apiPortType">
+    <operation name="DebugPing">
+      <input message="tns:DebugPingRequestMessage" />
+      <output message="tns:DebugPingResponseMessage" />
+    </operation>
+    <operation name="DebugEcho">
+      <input message="tns:DebugEchoRequestMessage" />
+      <output message="tns:DebugEchoResponseMessage" />
+    </operation>
+    <operation name="GetSystemInfo">
+      <input message="tns:GetSystemInfoRequestMessage" />
+      <output message="tns:GetSystemInfoResponseMessage" />
+    </operation>
+    <operation name="GetMetadata">
+      <input message="tns:GetMetadataRequestMessage" />
+      <output message="tns:GetMetadataResponseMessage" />
+    </operation>
+    <operation name="GetMetadaChildrenNames">
+      <input message="tns:GetMetadaChildrenNamesRequestMessage" />
+      <output message="tns:GetMetadaChildrenNamesResponseMessage" />
+    </operation>
+    <operation name="GetObject">
+      <input message="tns:GetObjectRequestMessage" />
+      <output message="tns:GetObjectResponseMessage" />
+    </operation>
+    <operation name="PostObject">
+      <input message="tns:PostObjectRequestMessage" />
+      <output message="tns:PostObjectResponseMessage" />
+    </operation>
+    <operation name="DeleteObject">
+      <input message="tns:DeleteObjectRequestMessage" />
+      <output message="tns:DeleteObjectResponseMessage" />
+    </operation>
+    <operation name="GetObjectList">
+      <input message="tns:GetObjectListRequestMessage" />
+      <output message="tns:GetObjectListResponseMessage" />
+    </operation>
+    <operation name="GetSessionParameter">
+      <input message="tns:GetSessionParameterRequestMessage" />
+      <output message="tns:GetSessionParameterResponseMessage" />
+    </operation>
+    <operation name="GetConstant">
+      <input message="tns:GetConstantRequestMessage" />
+      <output message="tns:GetConstantResponseMessage" />
+    </operation>
+    <operation name="SetConstant">
+      <input message="tns:SetConstantRequestMessage" />
+      <output message="tns:SetConstantResponseMessage" />
+    </operation>
+    <operation name="GetConstantList">
+      <input message="tns:GetConstantListRequestMessage" />
+      <output message="tns:GetConstantListResponseMessage" />
+    </operation>
+    <operation name="ExecuteRequest">
+      <input message="tns:ExecuteRequestRequestMessage" />
+      <output message="tns:ExecuteRequestResponseMessage" />
+    </operation>
+    <operation name="ExecuteRequestBatch">
+      <input message="tns:ExecuteRequestBatchRequestMessage" />
+      <output message="tns:ExecuteRequestBatchResponseMessage" />
+    </operation>
+    <operation name="ExecuteMethod">
+      <input message="tns:ExecuteMethodRequestMessage" />
+      <output message="tns:ExecuteMethodResponseMessage" />
+    </operation>
+    <operation name="ExecuteCode">
+      <input message="tns:ExecuteCodeRequestMessage" />
+      <output message="tns:ExecuteCodeResponseMessage" />
+    </operation>
+  </portType>
+  <binding name="brom_apiSoapBinding" type="tns:brom_apiPortType">
+    <soapbind:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="DebugPing">
+      <soapbind:operation soapAction="https://brom.itworks.group#brom_api:DebugPing" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DebugEcho">
+      <soapbind:operation soapAction="https://brom.itworks.group#brom_api:DebugEcho" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetSystemInfo">
+      <soapbind:operation soapAction="https://brom.itworks.group#brom_api:GetSystemInfo" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetMetadata">
+      <soapbind:operation soapAction="https://brom.itworks.group#brom_api:GetMetadata" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetMetadaChildrenNames">
+      <soapbind:operation soapAction="https://brom.itworks.group#brom_api:GetMetadaChildrenNames" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetObject">
+      <soapbind:operation soapAction="https://brom.itworks.group#brom_api:GetObject" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="PostObject">
+      <soapbind:operation soapAction="https://brom.itworks.group#brom_api:PostObject" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DeleteObject">
+      <soapbind:operation soapAction="https://brom.itworks.group#brom_api:DeleteObject" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetObjectList">
+      <soapbind:operation soapAction="https://brom.itworks.group#brom_api:GetObjectList" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetSessionParameter">
+      <soapbind:operation soapAction="https://brom.itworks.group#brom_api:GetSessionParameter" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetConstant">
+      <soapbind:operation soapAction="https://brom.itworks.group#brom_api:GetConstant" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SetConstant">
+      <soapbind:operation soapAction="https://brom.itworks.group#brom_api:SetConstant" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetConstantList">
+      <soapbind:operation soapAction="https://brom.itworks.group#brom_api:GetConstantList" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ExecuteRequest">
+      <soapbind:operation soapAction="https://brom.itworks.group#brom_api:ExecuteRequest" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ExecuteRequestBatch">
+      <soapbind:operation soapAction="https://brom.itworks.group#brom_api:ExecuteRequestBatch" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ExecuteMethod">
+      <soapbind:operation soapAction="https://brom.itworks.group#brom_api:ExecuteMethod" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ExecuteCode">
+      <soapbind:operation soapAction="https://brom.itworks.group#brom_api:ExecuteCode" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="brom_apiSoap12Binding" type="tns:brom_apiPortType">
+    <soap12bind:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="DebugPing">
+      <soap12bind:operation soapAction="https://brom.itworks.group#brom_api:DebugPing" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DebugEcho">
+      <soap12bind:operation soapAction="https://brom.itworks.group#brom_api:DebugEcho" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetSystemInfo">
+      <soap12bind:operation soapAction="https://brom.itworks.group#brom_api:GetSystemInfo" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetMetadata">
+      <soap12bind:operation soapAction="https://brom.itworks.group#brom_api:GetMetadata" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetMetadaChildrenNames">
+      <soap12bind:operation soapAction="https://brom.itworks.group#brom_api:GetMetadaChildrenNames" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetObject">
+      <soap12bind:operation soapAction="https://brom.itworks.group#brom_api:GetObject" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="PostObject">
+      <soap12bind:operation soapAction="https://brom.itworks.group#brom_api:PostObject" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DeleteObject">
+      <soap12bind:operation soapAction="https://brom.itworks.group#brom_api:DeleteObject" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetObjectList">
+      <soap12bind:operation soapAction="https://brom.itworks.group#brom_api:GetObjectList" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetSessionParameter">
+      <soap12bind:operation soapAction="https://brom.itworks.group#brom_api:GetSessionParameter" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetConstant">
+      <soap12bind:operation soapAction="https://brom.itworks.group#brom_api:GetConstant" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SetConstant">
+      <soap12bind:operation soapAction="https://brom.itworks.group#brom_api:SetConstant" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetConstantList">
+      <soap12bind:operation soapAction="https://brom.itworks.group#brom_api:GetConstantList" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ExecuteRequest">
+      <soap12bind:operation soapAction="https://brom.itworks.group#brom_api:ExecuteRequest" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ExecuteRequestBatch">
+      <soap12bind:operation soapAction="https://brom.itworks.group#brom_api:ExecuteRequestBatch" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ExecuteMethod">
+      <soap12bind:operation soapAction="https://brom.itworks.group#brom_api:ExecuteMethod" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ExecuteCode">
+      <soap12bind:operation soapAction="https://brom.itworks.group#brom_api:ExecuteCode" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="brom_api">
+    <port name="brom_apiSoap" binding="tns:brom_apiSoapBinding">
+      <documentation>
+        <wsi:Claim xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" conformsTo="http://ws-i.org/profiles/basic/1.1" />
+      </documentation>
+      <soapbind:address location="http://server.itworks.group/bromtest/ws/brom_api" />
+    </port>
+    <port name="brom_apiSoap12" binding="tns:brom_apiSoap12Binding">
+      <soap12bind:address location="http://server.itworks.group/bromtest/ws/brom_api" />
+    </port>
+  </service>
+</definitions>

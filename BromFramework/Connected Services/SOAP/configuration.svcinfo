@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configurationSnapshot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-microsoft-com:xml-wcfconfigurationsnapshot">
+  <behaviors />
+  <bindings>
+    <binding digest="System.ServiceModel.Configuration.BasicHttpBindingElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089:&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data name=&quot;brom_apiSoapBinding&quot; /&gt;" bindingType="basicHttpBinding" name="brom_apiSoapBinding" />
+    <binding digest="System.ServiceModel.Configuration.CustomBindingElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089:&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data name=&quot;brom_apiSoap12Binding&quot;&gt;&lt;httpTransport /&gt;&lt;textMessageEncoding messageVersion=&quot;Soap12&quot; /&gt;&lt;/Data&gt;" bindingType="customBinding" name="brom_apiSoap12Binding" />
+  </bindings>
+  <endpoints>
+    <endpoint normalizedDigest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;http://server.itworks.group/bromtest/ws/brom_api&quot; binding=&quot;basicHttpBinding&quot; bindingConfiguration=&quot;brom_apiSoapBinding&quot; contract=&quot;SOAP.brom_apiPortType&quot; name=&quot;brom_apiSoap&quot; /&gt;" digest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;http://server.itworks.group/bromtest/ws/brom_api&quot; binding=&quot;basicHttpBinding&quot; bindingConfiguration=&quot;brom_apiSoapBinding&quot; contract=&quot;SOAP.brom_apiPortType&quot; name=&quot;brom_apiSoap&quot; /&gt;" contractName="SOAP.brom_apiPortType" name="brom_apiSoap" />
+    <endpoint normalizedDigest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;http://server.itworks.group/bromtest/ws/brom_api&quot; binding=&quot;customBinding&quot; bindingConfiguration=&quot;brom_apiSoap12Binding&quot; contract=&quot;SOAP.brom_apiPortType&quot; name=&quot;brom_apiSoap12&quot; /&gt;" digest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;http://server.itworks.group/bromtest/ws/brom_api&quot; binding=&quot;customBinding&quot; bindingConfiguration=&quot;brom_apiSoap12Binding&quot; contract=&quot;SOAP.brom_apiPortType&quot; name=&quot;brom_apiSoap12&quot; /&gt;" contractName="SOAP.brom_apiPortType" name="brom_apiSoap12" />
+  </endpoints>
+</configurationSnapshot>

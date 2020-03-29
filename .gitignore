@@ -3,6 +3,9 @@
 ################################################################################
 
 /BromConsoleNetCore
+/BromConsoleFramework
+/BromUnitTests
+/Cache
 /packages
 /.vs
 /Brom/bin
